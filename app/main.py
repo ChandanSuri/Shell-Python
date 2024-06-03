@@ -1,6 +1,10 @@
 import sys
 
-VALID_COMMANDS = set("exit")
+VALID_COMMANDS = set(
+    [
+        "exit"
+    ]
+)
 
 def main():
 
