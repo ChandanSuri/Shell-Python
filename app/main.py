@@ -5,7 +5,8 @@ VALID_COMMANDS = set(
     [
         "exit",
         "echo",
-        "type"
+        "type",
+        "pwd"
     ]
 )
 
@@ -50,6 +51,8 @@ def main():
                 sys.stdout.write(f"{commandToCheck} is {commandPath}\n")
             else:
                 sys.stdout.write(f"{commandToCheck} not found\n")
+        elif commandName == "pwd":
+            sys.stdout.write(f"{os.getcwd()}\n")
 
 def getExecPath(paths, commandToCheck):
     if os.path.isfile(f"{commandToCheck}"):
