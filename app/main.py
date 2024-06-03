@@ -24,6 +24,7 @@ def main():
         execFilePath = getExecPath(paths, commandName)
         if execFilePath is not None:
             os.system(command)
+            continue
 
         args = []
         for idx in range(1, len(commandParams)):
