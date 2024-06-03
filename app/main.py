@@ -6,7 +6,8 @@ VALID_COMMANDS = set(
         "exit",
         "echo",
         "type",
-        "pwd"
+        "pwd",
+        "cd"
     ]
 )
 
@@ -53,6 +54,11 @@ def main():
                 sys.stdout.write(f"{commandToCheck} not found\n")
         elif commandName == "pwd":
             sys.stdout.write(f"{os.getcwd()}\n")
+        elif commandName == "cd":
+            try:
+                os.chdir(os.path.expanduser(args[0]))
+            except OSError:
+                sys.stdout.write(f"{commandName}: {args[0]}: No such file or directory\n")
 
 def getExecPath(paths, commandToCheck):
     if os.path.isfile(f"{commandToCheck}"):
