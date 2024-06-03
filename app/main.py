@@ -20,8 +20,12 @@ def main():
         command = input()
         commandParams = command.split(" ")
         commandName = commandParams[0]
-        args = []
 
+        execFilePath = getExecPath(paths, commandName)
+        if execFilePath is not None:
+            os.system(command)
+
+        args = []
         for idx in range(1, len(commandParams)):
             args.append(commandParams[idx])
 
@@ -47,8 +51,10 @@ def main():
                 sys.stdout.write(f"{commandToCheck} not found\n")
 
 def getExecPath(paths, commandToCheck):
+    if os.path.isfile(f"{commandToCheck}"):
+        return commandToCheck
+    
     commandPath = None
-
     for path in paths:
         if os.path.isfile(f"{path}/{commandToCheck}"):
             commandPath = f"{path}/{commandToCheck}"
