@@ -2,7 +2,8 @@ import sys
 
 VALID_COMMANDS = set(
     [
-        "exit"
+        "exit",
+        "echo"
     ]
 )
 
@@ -26,6 +27,10 @@ def main():
 
         if commandName == "exit" and args[0] == "0":
             break
+
+        if commandName == "echo":
+            toPrintString = " ".join(args)
+            sys.stdout.write(f"{toPrintString}\n")
 
 if __name__ == "__main__":
     main()
