@@ -1,12 +1,17 @@
 import sys
 
-def main():
-    sys.stdout.write("$ ")
-    sys.stdout.flush()
+VALID_COMMANDS = set()
 
-    # Wait for user input
-    command = input()
-    sys.stdout.write(f"{command}: command not found\n")
+def main():
+
+    while True:
+        sys.stdout.write("$ ")
+        sys.stdout.flush()
+
+        command = input()
+        if command not in VALID_COMMANDS:
+            sys.stdout.write(f"{command}: command not found\n")
+            continue
 
 if __name__ == "__main__":
     main()
