@@ -3,7 +3,8 @@ import sys
 VALID_COMMANDS = set(
     [
         "exit",
-        "echo"
+        "echo",
+        "type"
     ]
 )
 
@@ -31,6 +32,11 @@ def main():
         if commandName == "echo":
             toPrintString = " ".join(args)
             sys.stdout.write(f"{toPrintString}\n")
+        elif commandName == "type":
+            if args[0] in VALID_COMMANDS:
+                sys.stdout.write(f"{args[0]} is a shell builtin\n")
+            else:
+                sys.stdout.write(f"{args[0]} not found")
 
 if __name__ == "__main__":
     main()
