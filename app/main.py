@@ -10,13 +10,17 @@ def main():
 
         command = input()
         commandParams = command.split(" ")
-        commandName, args = commandParams[0], commandParams[1]
+        commandName = commandParams[0]
+        args = []
+
+        for argument in range(1, len(commandParams)):
+            args.append(argument)
 
         if commandName not in VALID_COMMANDS:
             sys.stdout.write(f"{commandName}: command not found\n")
             continue
 
-        if commandName == "exit" and args == "0":
+        if commandName == "exit" and args[0] == "0":
             break
 
 if __name__ == "__main__":
