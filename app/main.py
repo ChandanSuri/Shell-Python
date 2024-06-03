@@ -36,7 +36,7 @@ def main():
             if args[0] in VALID_COMMANDS:
                 sys.stdout.write(f"{args[0]} is a shell builtin\n")
             else:
-                sys.stdout.write(f"{args[0]} not found")
+                sys.stdout.write(f"{args[0]} not found\n")
 
 if __name__ == "__main__":
     main()
