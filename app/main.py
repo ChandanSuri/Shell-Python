@@ -13,8 +13,8 @@ def main():
         commandName = commandParams[0]
         args = []
 
-        for argument in range(1, len(commandParams)):
-            args.append(argument)
+        for idx in range(1, len(commandParams)):
+            args.append(commandParams[idx])
 
         if commandName not in VALID_COMMANDS:
             sys.stdout.write(f"{commandName}: command not found\n")
