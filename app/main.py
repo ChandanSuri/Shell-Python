@@ -44,7 +44,7 @@ def main():
             elif commandPath is not None:
                 sys.stdout.write(f"{commandToCheck} is {commandPath}\n")
             else:
-                sys.stdout.write(f"{commandToCheck}: command not found\n")
+                sys.stdout.write(f"{commandToCheck} not found\n")
 
 def getExecPath(paths, commandToCheck):
     commandPath = None
