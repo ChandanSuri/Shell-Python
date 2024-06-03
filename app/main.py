@@ -1,4 +1,5 @@
 import sys
+import os
 
 VALID_COMMANDS = set(
     [
@@ -9,6 +10,8 @@ VALID_COMMANDS = set(
 )
 
 def main():
+    pathEnvVar = os.environ.get("PATH")
+    paths = pathEnvVar.split(":")
 
     while True:
         sys.stdout.write("$ ")
@@ -33,10 +36,25 @@ def main():
             toPrintString = " ".join(args)
             sys.stdout.write(f"{toPrintString}\n")
         elif commandName == "type":
-            if args[0] in VALID_COMMANDS:
-                sys.stdout.write(f"{args[0]} is a shell builtin\n")
+            commandToCheck = args[0]
+            commandPath = getExecPath(paths, commandToCheck)
+
+            if commandToCheck in VALID_COMMANDS:
+                sys.stdout.write(f"{commandToCheck} is a shell builtin\n")
+            elif commandPath is not None:
+                sys.stdout.write(f"{commandToCheck} is {commandPath}\n")
             else:
-                sys.stdout.write(f"{args[0]} not found\n")
+                sys.stdout.write(f"{commandToCheck}: command not found\n")
+
+def getExecPath(paths, commandToCheck):
+    commandPath = None
+
+    for path in paths:
+        if os.path.isfile(f"{path}/{commandToCheck}"):
+            commandPath = f"{path}/{commandToCheck}"
+            break
+
+    return commandPath
 
 if __name__ == "__main__":
     main()
