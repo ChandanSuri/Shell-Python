@@ -53,7 +53,7 @@ def main():
 
 def getExecPath(paths, commandToCheck):
     if os.path.isfile(f"{commandToCheck}"):
-        return commandToCheck
+        commandPath = commandToCheck
     
     commandPath = None
     for path in paths:
